@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+.grid-container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(32, auto);
+    grid-template-rows: repeat(32, auto);
+    width: 500px;
+    height: 500px;
+    border: solid 5px black;
+}
+
+.background {
+    background-color: black;
+}
