@@ -1,10 +1,10 @@
-const grid = document.querySelector(".grid-container");
-const reset = document.querySelector("button");
+const sketchPad = document.querySelector(".grid-container");
+const resetButton = document.querySelector("button");
 let numColumns = 32;
 let mouseDown = false;
 
 for (let i = 0; i < numColumns*numColumns; i++){
-    grid.appendChild(document.createElement('div'));
+    sketchPad.appendChild(document.createElement('div'));
 }
 
 document.addEventListener("mousedown", function() {
@@ -15,12 +15,12 @@ document.addEventListener("mouseup", function() {
     mouseDown = false;
 })
 
-reset.addEventListener("click", resetBoard)
+resetButton.addEventListener("click", resetBoard)
 
-const gridSquares = document.querySelectorAll(".grid-container > div");
+const sketchPadTiles = document.querySelectorAll(".grid-container > div");
 
-gridSquares.forEach((square) => {
-    square.addEventListener("mouseover", changeBackGround)
+sketchPadTiles.forEach((tile) => {
+    tile.addEventListener("mouseover", changeBackGround)
 })
 
 
@@ -29,7 +29,7 @@ function changeBackGround() {
 }
 
 function resetBoard(){
-    gridSquares.forEach(square => {
-        square.classList.remove("background");
+    sketchPadTiles.forEach(tile => {
+        tile.classList.remove("background");
     })
 }
