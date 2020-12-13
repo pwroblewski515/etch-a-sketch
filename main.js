@@ -20,11 +20,11 @@ resetButton.addEventListener("click", resetBoard)
 const sketchPadTiles = document.querySelectorAll(".grid-container > div");
 
 sketchPadTiles.forEach((tile) => {
-    tile.addEventListener("mouseover", changeBackGround)
+    tile.addEventListener("mouseover", changeBackground)
 })
 
 
-function changeBackGround() {
+function changeBackground() {
     if (mouseDown) this.classList.add("background");
 }
 
