@@ -97,7 +97,6 @@ function darkenTile(tile) {
     } else {
         currentBrightness-=0.1;
         tile.style.filter = `brightness(${currentBrightness})`;
-        console.log(currentBrightness);
     }
 }
 
