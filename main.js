@@ -51,7 +51,6 @@ function createTilesInSketchPad(numColumns) {
     }
 }
 
-
 function resetBoard(){
     removeTiles();
     generateSketchPad();
@@ -66,10 +65,35 @@ function removeTiles() {
 
 function changeBackground(e) {
     if (e.type === "mouseover"){
-        if (mouseDown) e.target.classList.add("background");
+        if (mouseDown) updateColorInTile(e.target);
     }
     else if (e.type === "mousedown"){
-        console.log(e);
-        e.target.classList.add("background");
+        updateColorInTile(e.target);
     }
+}
+
+function updateColorInTile(tile) {
+    if (tileHasColor(tile)) {
+        addOpacityToTile(tile);
+    } else {
+        tile.style.backgroundColor = getRandomColor();
+    }
+    
+}
+
+function tileHasColor(tile) {
+    if (tile.style.backgroundColor) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function addOpacityToTile(tile) {
+    return;
+}
+
+function getRandomColor() {
+    let color = Math.floor(Math.random()*16777215).toString(16);
+    return "#" + color;
 }
