@@ -3,18 +3,15 @@ const resetButton = document.querySelector("button");
 let mouseDown = false;
 generateSketchPad();
 
-function getNumColumns(){
-    let numColumns = prompt("Please enter a number of columns: ");
-    while (true){
-        if (numColumns < 100) return numColumns;
-        numColumns = prompt("Please enter a number less than 100");
-    }
-}
 
-function updateNumColumnsInGrid(numColumns){
-    sketchPad.style.gridTemplateColumns = `repeat(${numColumns},auto)`;
-    sketchPad.style.gridTemplateRows = `repeat(${numColumns},auto)`;
-}
+resetButton.addEventListener("click", resetBoard)
+sketchPad.addEventListener("mouseover", function(e) {
+    changeBackground(e);
+})
+
+sketchPad.addEventListener("mousedown", function(e) {
+    changeBackground(e);
+})
 
 document.addEventListener("mousedown", function() {
     mouseDown = true;
@@ -24,14 +21,28 @@ document.addEventListener("mouseup", function() {
     mouseDown = false;
 })
 
-resetButton.addEventListener("click", resetBoard)
+function getNumColumns(){
+    let numColumns = prompt("Please enter a number of columns: ");
+    while (true){
+        if (numColumns < 100 && numColumns !== null) return numColumns;
+        numColumns = prompt("Please enter a number less than 100");
+    }
+}
+
+function updateNumColumnsInGrid(numColumns){
+    sketchPad.style.gridTemplateColumns = `repeat(${numColumns},auto)`;
+    sketchPad.style.gridTemplateRows = `repeat(${numColumns},auto)`;
+}
+
+
 
 
 function changeBackground(e) {
     if (e.type === "mouseover"){
         if (mouseDown) e.target.classList.add("background");
     }
-    else if (e.type === "click"){
+    else if (e.type === "mousedown"){
+        console.log(e);
         e.target.classList.add("background");
     }
 }
@@ -52,15 +63,6 @@ function createTilesInSketchPad(numColumns) {
         sketchPad.appendChild(document.createElement('div'));
     }
     let sketchPadTiles = document.querySelectorAll(".grid-container > div");
-
-    sketchPadTiles.forEach((tile) => {
-    tile.addEventListener("mouseover", function(e) {
-        changeBackground(e);
-    });
-    tile.addEventListener("click", function(e){
-        changeBackground(e);
-    });
-})
 }
 
 function removeTiles() {
