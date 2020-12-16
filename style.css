@@ -2,6 +2,13 @@ body {
     text-align: center;
 }
 
+.container-wrapper {
+    border: solid 5px black;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+
 .grid-container {
     margin: auto;
     display: grid;
@@ -9,7 +16,7 @@ body {
     grid-template-rows: repeat(32, auto);
     width: 500px;
     height: 500px;
-    border: solid 5px black;
+    
 }
 
 .background {
