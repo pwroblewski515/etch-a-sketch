@@ -1,9 +1,12 @@
+// global variables
 const sketchPad = document.querySelector(".grid-container");
 const resetButton = document.querySelector("button");
 let mouseDown = false;
+
+// entry point
 generateSketchPad();
 
-
+// event listeners
 resetButton.addEventListener("click", resetBoard)
 sketchPad.addEventListener("mouseover", function(e) {
     changeBackground(e);
@@ -21,6 +24,14 @@ document.addEventListener("mouseup", function() {
     mouseDown = false;
 })
 
+// functions
+
+function generateSketchPad(){
+    let numColumns = getNumColumns();
+    updateNumColumnsInGrid(numColumns);
+    createTilesInSketchPad(numColumns);
+}
+
 function getNumColumns(){
     let numColumns = prompt("Please enter a number of columns: ");
     while (true){
@@ -34,8 +45,25 @@ function updateNumColumnsInGrid(numColumns){
     sketchPad.style.gridTemplateRows = `repeat(${numColumns},auto)`;
 }
 
+function createTilesInSketchPad(numColumns) {
+    for (let i = 0; i < numColumns * numColumns; i++) {
+        sketchPad.appendChild(document.createElement('div'));
+    }
+    let sketchPadTiles = document.querySelectorAll(".grid-container > div");
+}
 
 
+function resetBoard(){
+    removeTiles();
+    generateSketchPad();
+}
+
+function removeTiles() {
+    let sketchPadTiles = document.querySelectorAll(".grid-container > div");
+    sketchPadTiles.forEach(tile => {
+        sketchPad.removeChild(tile)
+    });
+}
 
 function changeBackground(e) {
     if (e.type === "mouseover"){
@@ -45,29 +73,4 @@ function changeBackground(e) {
         console.log(e);
         e.target.classList.add("background");
     }
-}
-
-function resetBoard(){
-    removeTiles();
-    generateSketchPad();
-}
-
-function generateSketchPad(){
-    let numColumns = getNumColumns();
-    updateNumColumnsInGrid(numColumns);
-    createTilesInSketchPad(numColumns);
-}
-
-function createTilesInSketchPad(numColumns) {
-    for (let i = 0; i < numColumns * numColumns; i++) {
-        sketchPad.appendChild(document.createElement('div'));
-    }
-    let sketchPadTiles = document.querySelectorAll(".grid-container > div");
-}
-
-function removeTiles() {
-    let sketchPadTiles = document.querySelectorAll(".grid-container > div");
-    sketchPadTiles.forEach(tile => {
-        sketchPad.removeChild(tile)
-    });
 }
