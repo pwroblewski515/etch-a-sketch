@@ -49,7 +49,6 @@ function createTilesInSketchPad(numColumns) {
     for (let i = 0; i < numColumns * numColumns; i++) {
         sketchPad.appendChild(document.createElement('div'));
     }
-    let sketchPadTiles = document.querySelectorAll(".grid-container > div");
 }
 
 
