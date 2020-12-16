@@ -4,7 +4,7 @@ const resetButton = document.querySelector("button");
 let mouseDown = false;
 
 // entry point
-generateSketchPad();
+generateSketchPad(16);
 
 // event listeners
 resetButton.addEventListener("click", resetBoard)
@@ -26,8 +26,9 @@ document.addEventListener("mouseup", function() {
 
 // functions
 
-function generateSketchPad(){
-    let numColumns = getNumColumns();
+function generateSketchPad(numColumns){
+    if (!numColumns) numColumns = getNumColumns();
+    console.log(numColumns);
     updateNumColumnsInGrid(numColumns);
     createTilesInSketchPad(numColumns);
 }
