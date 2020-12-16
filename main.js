@@ -74,7 +74,7 @@ function changeBackground(e) {
 
 function updateColorInTile(tile) {
     if (tileHasColor(tile)) {
-        addOpacityToTile(tile);
+        darkenTile(tile);
     } else {
         tile.style.backgroundColor = getRandomColor();
     }
@@ -89,11 +89,31 @@ function tileHasColor(tile) {
     }
 }
 
-function addOpacityToTile(tile) {
-    return;
+function darkenTile(tile) {
+    let currentBrightness = getCurrentBrightness(tile);
+    if (!currentBrightness){
+        tile.style.filter = "brightness(0.9)";
+    } else {
+        currentBrightness-=0.1;
+        tile.style.filter = `brightness(${currentBrightness})`;
+        console.log(currentBrightness);
+    }
 }
 
 function getRandomColor() {
     let color = Math.floor(Math.random()*16777215).toString(16);
     return "#" + color;
+}
+
+function getCurrentBrightness(tile){
+    let brightness =  tile.style.filter;
+    brightness = parseBrightnessString(brightness);
+    return brightness
+}
+
+function parseBrightnessString(brightness) {
+    let startingIndex = brightness.indexOf("(") + 1;
+    let endingIndex = brightness.indexOf(")");
+    return brightness.slice(startingIndex,endingIndex);
+
 }
