@@ -5,6 +5,7 @@ Click and drag to sketch a drawing in the sketch pad. The tile will be populated
 Learned:<br>
 Event bubbling<br>
 More DOM manipulation<br>
+How to use dragstart event to prevent the browser from doing its own drag animation<br>
 
 Challenges:<br>
 I spent a lot of time trying to directly manipulate the divs RGB color to make it darker before I realized that there was a CSS property for brightness.
