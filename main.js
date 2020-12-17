@@ -8,21 +8,10 @@ generateSketchPad(16);
 
 // event listeners
 resetButton.addEventListener("click", resetBoard)
-sketchPad.addEventListener("mouseover", function(e) {
-    changeBackground(e);
-})
-
-sketchPad.addEventListener("mousedown", function(e) {
-    changeBackground(e);
-})
-
-document.addEventListener("mousedown", function() {
-    mouseDown = true;
-})
-
-document.addEventListener("mouseup", function() {
-    mouseDown = false;
-})
+sketchPad.addEventListener("mouseover", (e) => changeBackground(e));
+sketchPad.addEventListener("mousedown", (e) => changeBackground(e));
+document.addEventListener("mousedown", () => mouseDown = true)
+document.addEventListener("mouseup", () => mouseDown = false);
 
 // functions
 
