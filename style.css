@@ -1,12 +1,19 @@
 body {
     text-align: center;
+    background-color: #ededee;
+}
+
+button {
+    margin-top: 20px;
+    font-size: 20px;
 }
 
 .container-wrapper {
-    border: solid 50px red;
+    border: solid 100px #d12c3a;
     width: 500px;
     height: 500px;
     margin: auto;
+    border-radius: 5%;
 }
 
 .grid-container {
@@ -16,5 +23,6 @@ body {
     grid-template-rows: repeat(32, auto);
     width: 500px;
     height: 500px;
+    background-color: #c8c8c8;
     
 }
